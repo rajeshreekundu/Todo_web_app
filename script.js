@@ -27,3 +27,64 @@ const errorSms = document.getElementById("errorText");
 //   console.log('hello!!!!!!!');
 // };
 
+const date = new Date();
+const year = date.getFullYear();
+const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Add 1 and pad
+const day = date.getDate().toString().padStart(2, "0"); // Pad day
+
+const formattedDate = `${day}-${month}-${year}`;
+
+$(document).ready(function () {
+  $(".butn-cls").click(function () {
+    if (inputBox.value === "") {
+      alert("You have to write something");
+    } else {
+      let card = document.createElement("card");
+      let cardTitle = document.createElement("h3");
+      let cardDesc = document.createElement("p");
+      let taskDate = document.createElement("p");
+      let deleteTask = document.createElement("span");
+
+      card.classList.add("todo--card");
+      taskDate.classList.add("card__date");
+      deleteTask.classList.add("delete__card");
+
+      cardTitle.innerHTML = inputBox.value;
+      cardDesc.innerHTML = desc.value;
+      taskDate.innerHTML = formattedDate;
+
+      listContainer.appendChild(card);
+      card.appendChild(cardTitle);
+      card.appendChild(cardDesc);
+      card.appendChild(taskDate);
+      card.appendChild(deleteTask);
+    }
+    inputBox.value = "";
+    desc.value = "";
+    saveData();
+  });
+
+  listContainer.addEventListener(
+    "click",
+    function (e) {
+      if (e.target.tagName === "CARD") {
+        e.target.classList.toggle("checked");
+        saveData();
+      } else if (e.target.tagName === "SPAN") {
+        e.target.parentElement.remove();
+        saveData();
+      }
+    },
+    false
+  );
+
+  function saveData() {
+    localStorage.setItem("data", listContainer.innerHTML);
+  }
+
+  function showList() {
+    listContainer.innerHTML = localStorage.getItem("data");
+  }
+
+  showList();
+});
