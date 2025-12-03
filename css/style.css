@@ -105,6 +105,7 @@ body {
   justify-content: center;
 }
 .todo--card.checked {
+  text-decoration: line-through;
   background: #dcf5e2;
 }
 .delete__card::before {
@@ -201,6 +202,15 @@ textarea.input-cls {
   .todo__list__wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+  .drawer_content_wrap {
+    width: 100%;
+  }
+  .container {
+    max-width: 100%;
+  }
+  .todo__body{
+    padding-block: 40px 40px;
   }
 }
 @media screen and (max-width: 500px) {
