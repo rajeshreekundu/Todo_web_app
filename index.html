@@ -37,6 +37,27 @@
                         </span>
 
                     </card>
+
+                    <!-- <card class="todo--card">
+                        <div class="card--top">
+                            <i class="fa fa-square-o"></i>
+                            <h3>DSA Complete</h3>
+                        </div>
+                        <div class="card--body">
+
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <p class="card__date">28 Nov 2025</p>
+                           
+                        </div>
+                        <div class="card--foter">
+                            <p class="card__date">28 Nov 2025</p>
+                            <div class="curd__operation">
+                                <i class="fa fa-pencil"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </div>
+                    </card> -->
+
                 </div>
             </div>
         </div>
@@ -52,10 +73,20 @@
             </div>
             <div class="drawer__body">
                 <form action="" class="todo-form">
-                    <input type="text" placeholder="Task Title" name="" class="form-control input-cls" id="inputId">
-                    <textarea placeholder="Task Description" class="form-control input-cls" id="textareaId"
-                        rows="4"></textarea>
-                    <button type="button" class="btn butn-cls">Add Task</button>
+                    <div class="form-group">
+                        <label for="inputId">Task Title</label>
+                        <input type="text" placeholder="" name="" class="form-control input-cls" id="inputId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="textareaId">Task Description</label>
+                        <textarea placeholder="Optional" class="form-control input-cls" id="textareaId"
+                            rows="4"></textarea>
+                    </div>
+
+                    <div class="form_btn_wrap">
+                        <p class="error--sms" id="erroText"></p>
+                        <button type="button" class="btn butn-cls">Add Task</button>
+                    </div>
                 </form>
             </div>
         </div>

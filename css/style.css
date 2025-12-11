@@ -74,10 +74,15 @@ body {
   user-select: none;
   cursor: pointer;
 }
+.card--top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .todo--card h3 {
   font-size: 22px;
   font-weight: 600;
-  margin-block: 0 8px;
+  margin-block: 0;
   color: #25395e;
 }
 .todo--card p {
@@ -175,21 +180,52 @@ body {
   box-sizing: border-box;
 }
 .todo-form {
-  text-align: right;
+  /* text-align: right; */
+}
+.todo-form label {
+  display: block;
+  /* text-align: left; */
 }
 .input-cls {
   width: 100%;
   margin-bottom: 12px;
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: 2px;
+}
+.input-cls::placeholder {
+  font-size: 14px;
 }
 textarea.input-cls {
   resize: none;
+}
+.form_btn_wrap {
+  position: relative;
+  margin-top: 25px;
+  text-align: right;
 }
 .btn.butn-cls {
   padding: 8px 32px;
   background: #021b79;
   color: #fff;
+}
+.card--foter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.error--sms {
+  margin: 0;
+  position: absolute;
+  top: -22px;
+  color: #b30012;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+}
+div:has(*:is(input, textarea):required) > label::after {
+  content: "*";
+  color: #b30012;
 }
 
 @media screen and (max-width: 991px) {
@@ -209,7 +245,7 @@ textarea.input-cls {
   .container {
     max-width: 100%;
   }
-  .todo__body{
+  .todo__body {
     padding-block: 40px 40px;
   }
 }
