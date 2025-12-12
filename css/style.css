@@ -68,8 +68,7 @@ body {
 .todo--card {
   display: block;
   background: beige;
-  padding: 25px 25px 20px;
-  border-radius: 3px;
+  padding: 20px 20px 20px;
   position: relative;
   user-select: none;
   cursor: pointer;
@@ -78,6 +77,9 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
 .todo--card h3 {
   font-size: 22px;
@@ -95,26 +97,61 @@ body {
   margin: 0;
   font-size: 12px;
   color: #5a5a5a;
+  width: 82%;
 }
-.delete__card {
-  position: absolute;
-  right: 12px;
-  top: 12px;
+/* .edit__card {
   cursor: pointer;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+.delete__card {
+  /* position: absolute;
+  right: 0;
+  top: 0; */
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  /* background: #f1f1f1; */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .todo--card.checked {
-  text-decoration: line-through;
   background: #dcf5e2;
+}
+.checkbox {
+  font-size: 19px;
+}
+/* .todo--card.checked .checkbox::before {
+  content: "\f14a";
+} */
+.todo--card::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-image: url("../images/uncheck-icon.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: absolute;
+  left: 20px;
+  top: 25px;
+}
+.todo--card.checked::before {
+  background-image: url("../images/check-icon.svg");
 }
 .delete__card::before {
   content: "\f014";
+  font-family: "FontAwesome";
+  font-size: 14px;
+  color: #6b6b6b;
+}
+.edit__card::before {
+  content: "\f040";
   font-family: "FontAwesome";
   font-size: 14px;
   color: #6b6b6b;

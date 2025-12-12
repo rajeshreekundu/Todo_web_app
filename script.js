@@ -2,7 +2,6 @@ $(document).ready(function () {
   $(".open__drawer").click(function () {
     $("#todo_Drawer").addClass("active");
   });
-
   $(".close__modal").click(function () {
     $("#todo_Drawer").removeClass("active");
   });
@@ -43,30 +42,41 @@ $(document).ready(function () {
     if (inputBox.value === "") {
       // alert("You have to write something");
       errorSMS.textContent = "Please fill the required field";
-      errorSMS.prepend(icn)
-      console.log('51458453')
+      errorSMS.prepend(icn);
+      console.log("51458453");
     } else {
       let card = document.createElement("card");
+      let topCard = document.createElement("div");
+      let botomCard = document.createElement("div");
       let cardTitle = document.createElement("h3");
       let cardDesc = document.createElement("p");
       let taskDate = document.createElement("p");
+      let editCard = document.createElement("span");
       let deleteTask = document.createElement("span");
-      // let checkbox = document.createElement("i");
 
       card.classList.add("todo--card");
       taskDate.classList.add("card__date");
+      editCard.classList.add("edit__card");
       deleteTask.classList.add("delete__card");
-      // checkbox.classList.add("fa fa-square-o");
+      // checkBox.classList.add("checkbox", "fa");
+      topCard.classList.add("card--top");
+      botomCard.classList.add("card--foter");
+
+      // topCard.innerHTML = "hello";
 
       cardTitle.innerHTML = inputBox.value;
       cardDesc.innerHTML = desc.value;
       taskDate.innerHTML = formattedDate;
 
       listContainer.appendChild(card);
-      card.appendChild(cardTitle);
+      // card.appendChild(cardTitle);
       card.appendChild(cardDesc);
-      card.appendChild(taskDate);
-      card.appendChild(deleteTask);
+      card.prepend(topCard);
+      card.appendChild(botomCard);
+      topCard.appendChild(cardTitle);
+      botomCard.prepend(taskDate);
+      botomCard.appendChild(editCard);
+      botomCard.appendChild(deleteTask);
     }
     inputBox.value = "";
     desc.value = "";
@@ -78,9 +88,11 @@ $(document).ready(function () {
       if (e.target.tagName === "CARD") {
         e.target.classList.toggle("checked");
         saveData();
-      } else if (e.target.tagName === "SPAN") {
-        e.target.parentElement.remove();
+      } else if (e.target.classList.contains("delete__card")) {
+        e.target.parentElement.parentElement.remove();
         saveData();
+      } else if(e.target.classList.contains.contains("edit__card")){
+        e.target.parentElement
       }
     },
     false
@@ -95,4 +107,5 @@ $(document).ready(function () {
   }
 
   showList();
+  // localStorage.clear()
 });
