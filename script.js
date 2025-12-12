@@ -91,7 +91,7 @@ $(document).ready(function () {
       card.appendChild(botomCard);
       topCard.appendChild(cardTitle);
       botomCard.prepend(taskDate);
-      botomCard.appendChild(editCard);
+      // botomCard.appendChild(editCard);
       botomCard.appendChild(deleteTask);
     }
     inputBox.value = "";
@@ -108,9 +108,21 @@ $(document).ready(function () {
       } else if (e.target.classList.contains("delete__card")) {
         e.target.parentElement.parentElement.remove();
         saveData();
-
-      } else if(e.target.classList.contains("edit__card")) {
+      } else if (e.target.classList.contains("edit__card")) {
         // e.target.parentElement
+        // get the card element
+        const card = e.target.closest(".todo--card");
+
+        // fill existing values into the form
+        inputBox.value = card.querySelector("h3").textContent;
+        desc.value = card.querySelector("p").textContent;
+
+        // mark editing state
+        isEditing = true;
+        cardBeingEdited = card;
+
+        // open drawer
+        $("#todo_Drawer").addClass("active");
       }
     },
     false
