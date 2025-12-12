@@ -1,3 +1,6 @@
+let isEditing = false;
+let cardBeingEdited = null;
+
 $(document).ready(function () {
   $(".open__drawer").click(function () {
     $("#todo_Drawer").addClass("active");
@@ -11,7 +14,6 @@ $(document).ready(function () {
 const inputBox = document.getElementById("inputId");
 const listContainer = document.getElementById("todoList");
 const desc = document.getElementById("textareaId");
-
 const errorSms = document.getElementById("errorText");
 
 // let addTask = function () {
@@ -39,11 +41,25 @@ icn.className = "fa fa-exclamation-circle";
 
 $(document).ready(function () {
   $(".butn-cls").click(function () {
-    if (inputBox.value === "") {
+    if (inputBox.value.trim() === "") {
       // alert("You have to write something");
       errorSMS.textContent = "Please fill the required field";
       errorSMS.prepend(icn);
       console.log("51458453");
+      return;
+    }
+
+    if (isEditing && cardBeingEdited) {
+      // // ‼️ UPDATE EXISTING CARD
+      // cardBeingEdited.querySelector("h3").textContent = inputBox.value;
+      // cardBeingEdited.querySelector("p").textContent = desc.value;
+
+      // // reset mode
+      // isEditing = false;
+      // cardBeingEdited = null;
+
+      $(".open__drawer").text("Add Todo"); // optional
+      console.log("12355");
     } else {
       let card = document.createElement("card");
       let topCard = document.createElement("div");
@@ -84,14 +100,16 @@ $(document).ready(function () {
   });
 
   listContainer.addEventListener(
-    "click", function (e) {
+    "click",
+    function (e) {
       if (e.target.tagName === "CARD") {
         e.target.classList.toggle("checked");
         saveData();
       } else if (e.target.classList.contains("delete__card")) {
         e.target.parentElement.parentElement.remove();
         saveData();
-      } else if(e.target.classList.contains.contains("edit__card")){
+
+      } else if(e.target.classList.contains("edit__card")) {
         // e.target.parentElement
       }
     },
@@ -107,5 +125,5 @@ $(document).ready(function () {
   }
 
   showList();
-  // localStorage.clear()
+  localStorage.clear();
 });
