@@ -125,5 +125,5 @@ $(document).ready(function () {
   }
 
   showList();
-  // localStorage.clear();
+  localStorage.clear();
 });

@@ -71,7 +71,7 @@ body {
   padding: 20px 20px 20px;
   position: relative;
   user-select: none;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .card--top {
   display: flex;
@@ -140,6 +140,7 @@ body {
   position: absolute;
   left: 20px;
   top: 25px;
+  cursor: pointer;
 }
 .todo--card.checked::before {
   background-image: url("../images/check-icon.svg");
