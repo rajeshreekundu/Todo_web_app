@@ -92,7 +92,7 @@ $(document).ready(function () {
         e.target.parentElement.parentElement.remove();
         saveData();
       } else if(e.target.classList.contains.contains("edit__card")){
-        e.target.parentElement
+        // e.target.parentElement
       }
     },
     false
