@@ -93,11 +93,16 @@ body {
   line-height: 1.4;
   color: #585858;
 }
+.todo--card.checked h3,
+.todo--card.checked p {
+  text-decoration: line-through;
+}
 .todo--card .card__date {
   margin: 0;
   font-size: 12px;
   color: #5a5a5a;
   width: 82%;
+  text-decoration: none !important;
 }
 /* .edit__card {
   cursor: pointer;

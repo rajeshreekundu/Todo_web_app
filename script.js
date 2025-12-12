@@ -50,15 +50,15 @@ $(document).ready(function () {
     }
 
     if (isEditing && cardBeingEdited) {
-      // // ‼️ UPDATE EXISTING CARD
-      // cardBeingEdited.querySelector("h3").textContent = inputBox.value;
-      // cardBeingEdited.querySelector("p").textContent = desc.value;
+      // ‼️ UPDATE EXISTING CARD
+      cardBeingEdited.querySelector("h3").textContent = inputBox.value;
+      cardBeingEdited.querySelector("p").textContent = desc.value;
 
-      // // reset mode
-      // isEditing = false;
-      // cardBeingEdited = null;
+      // reset mode
+      isEditing = false;
+      cardBeingEdited = null;
 
-      $(".open__drawer").text("Add Todo"); // optional
+      // $(".open__drawer").text("Add Todo"); // optional
       console.log("12355");
     } else {
       let card = document.createElement("card");
@@ -91,7 +91,7 @@ $(document).ready(function () {
       card.appendChild(botomCard);
       topCard.appendChild(cardTitle);
       botomCard.prepend(taskDate);
-      // botomCard.appendChild(editCard);
+      botomCard.appendChild(editCard);
       botomCard.appendChild(deleteTask);
     }
     inputBox.value = "";
@@ -123,6 +123,7 @@ $(document).ready(function () {
 
         // open drawer
         $("#todo_Drawer").addClass("active");
+        saveData();
       }
     },
     false
