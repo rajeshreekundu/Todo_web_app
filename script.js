@@ -7,14 +7,20 @@ $(document).ready(function () {
   });
   $(".close__modal").click(function () {
     $("#todo_Drawer").removeClass("active");
+    inputBox.value = "";
+    desc.value = "";
+    isEditing = false;
+    cardBeingEdited = null;
+     $(".butn-cls").text("Add Task");
   });
   // console.log("cvbnm ");
 });
 
-const inputBox = document.getElementById("inputId");
-const listContainer = document.getElementById("todoList");
-const desc = document.getElementById("textareaId");
-const errorSms = document.getElementById("errorText");
+let inputBox = document.getElementById("inputId");
+let listContainer = document.getElementById("todoList");
+let desc = document.getElementById("textareaId");
+let errorSms = document.getElementById("errorText");
+let taskForm = document.querySelector(".todo-form");
 
 // let addTask = function () {
 // //   if (inputBox.value == " ") {
@@ -41,7 +47,10 @@ icn.className = "fa fa-exclamation-circle";
 
 $(document).ready(function () {
   $(".butn-cls").click(function () {
-    if (inputBox.value.trim() === "") {
+    const title = inputBox.value.trim();
+    const description = desc.value.trim();
+
+    if (title === "") {
       // alert("You have to write something");
       errorSMS.textContent = "Please fill the required field";
       errorSMS.prepend(icn);
@@ -51,16 +60,17 @@ $(document).ready(function () {
 
     if (isEditing && cardBeingEdited) {
       // ‼️ UPDATE EXISTING CARD
-      cardBeingEdited.querySelector("h3").textContent = inputBox.value;
-      cardBeingEdited.querySelector("p").textContent = desc.value;
-
+      cardBeingEdited.querySelector("h3").textContent = title;
+      cardBeingEdited.querySelector("p").textContent = description;
       // reset mode
       isEditing = false;
       cardBeingEdited = null;
+      // $(".butn-cls").text("Update Todo");
 
       // $(".open__drawer").text("Add Todo"); // optional
       console.log("12355");
     } else {
+      // Add Mode
       let card = document.createElement("card");
       let topCard = document.createElement("div");
       let botomCard = document.createElement("div");
@@ -94,9 +104,15 @@ $(document).ready(function () {
       botomCard.appendChild(editCard);
       botomCard.appendChild(deleteTask);
     }
+    // inputBox.value = "";
+    // desc.value = "";
+    saveData();
+    $("#todo_Drawer").removeClass("active");
     inputBox.value = "";
     desc.value = "";
-    saveData();
+    isEditing = false;
+    cardBeingEdited = null;
+      $(".butn-cls").text("Add Task");
   });
 
   listContainer.addEventListener(
@@ -120,6 +136,8 @@ $(document).ready(function () {
         // mark editing state
         isEditing = true;
         cardBeingEdited = card;
+
+        $(".butn-cls").text("Save Task");
 
         // open drawer
         $("#todo_Drawer").addClass("active");

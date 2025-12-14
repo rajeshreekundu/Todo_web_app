@@ -104,19 +104,21 @@ body {
   width: 82%;
   text-decoration: none !important;
 }
-/* .edit__card {
-  cursor: pointer;
+.edit__card {
   width: 20px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 20px;
   height: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
-} */
+  justify-content: center; */
+}
 .delete__card {
-  /* position: absolute;
-  right: 0;
-  top: 0; */
   cursor: pointer;
   width: 20px;
   height: 20px;
@@ -150,6 +152,7 @@ body {
 .todo--card.checked::before {
   background-image: url("../images/check-icon.svg");
 }
+
 .delete__card::before {
   content: "\f014";
   font-family: "FontAwesome";
